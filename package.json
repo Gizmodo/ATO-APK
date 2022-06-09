@@ -1,0 +1,21 @@
+{
+  "name": "ato",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1",
+    "express-winston": "^4.2.0",
+    "morgan": "^1.10.0",
+    "morgan-json": "^1.1.0",
+    "node-uuid": "^1.4.8",
+    "underscore": "^1.13.4",
+    "winston": "^3.7.2"
+  }
+}
