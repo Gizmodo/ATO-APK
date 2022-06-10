@@ -7,7 +7,7 @@ const httpPort = 3000
 const apkUpdater = require('./lib/updater.js');
 
 app.use(httpLogger)
-apkUpdater.enable(app, '/anyUpdateServerRoute');
+apkUpdater.enable(app, '/checkupdate');
 
 app.listen(httpPort, () =>
     logger.info('Express.js listening on port 3000.'))

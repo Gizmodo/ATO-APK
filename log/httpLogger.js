@@ -1,5 +1,6 @@
 const morgan = require('morgan')
 const json = require('morgan-json')
+const moment = require('moment')
 const format = json({
     method: ':method',
     url: ':url'
@@ -14,8 +15,8 @@ const httpLogger = morgan(format, {
                 url
             } = JSON.parse(message)
 
-            logger.info('HTTP Access Log', {
-                timestamp: new Date().toISOString().replace('T', ' ').substring(0, 19),
+            logger.info('', {
+                time: moment().format('HH:mm:ss'),
                 method,
                 url
             })
