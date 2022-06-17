@@ -16,7 +16,7 @@ const httpLogger = morgan(format, {
             } = JSON.parse(message)
 
             logger.info('', {
-                time: moment().format('HH:mm:ss'),
+                time: moment().format("YYYY.MM.DD HH:mm:ss"),
                 method,
                 url
             })
