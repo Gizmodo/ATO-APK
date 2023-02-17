@@ -1,6 +1,6 @@
 {
   "name": "OTA",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Backend для получения обновлений",
   "main": "index.js",
   "scripts": {
@@ -19,6 +19,7 @@
     "moment": "^2.29.3",
     "morgan": "^1.10.0",
     "morgan-json": "^1.1.0",
+    "prom-client": "^14.1.1",
     "underscore": "^1.13.4",
     "uuid": "^8.3.2",
     "winston": "^3.7.2"

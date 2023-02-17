@@ -3,12 +3,20 @@ const logger = require('./log/logger')
 const httpLogger = require('./log/httpLogger')
 const ip = require('ip')
 const app = express()
-const httpPort = 3000
+const httpPort = 3000;
+const httpPortPrometheus = 4001;
 const apkUpdater = require('./lib/updater.js');
 const fileUpload = require('express-fileupload');
 const path = require('path');
 const fs = require('fs');
 const directoryPath = path.join(__dirname, "/.apk_repo");
+
+const client = require('prom-client');
+const collectDefaultMetrics = client.collectDefaultMetrics;
+const Registry = client.Registry;
+const register = new Registry();
+collectDefaultMetrics({ register });
+
 app.use(httpLogger)
 app.use(express.json());
 app.use(fileUpload({
@@ -78,3 +86,15 @@ app.delete('/files/:id', async (req, res) => {
         }
     })
 })
+
+app.get('/metrics', async (_req, res) => {
+  try {
+    res.set('Content-Type', register.contentType);
+    res.end(await register.metrics());
+  } catch (err) {
+    res.status(500).end(err);
+  }
+});
+
+app.listen(httpPortPrometheus, () =>
+    logger.info(`Сервер Prometheus запущен на ${ip.address()}:${httpPortPrometheus}`))
